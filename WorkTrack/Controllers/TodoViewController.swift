@@ -15,14 +15,7 @@ class TodoViewController: UIViewController {
     
     
     
-    var todos: [Todo] = [
-        Todo(email: "naman@gmail.com", body: "Complete the iOS developer bootcamp."),
-        Todo(email: "naman@gmail.com", body: "Make the app."),
-        Todo(email: "naman@gmail.com", body: "Complete the Tensorflow in Practice certification."),
-        Todo(email: "naman@gmail.com", body: "Complete the Tensorflow in Practice certification."),
-        Todo(email: "naman@gmail.com", body: "Complete the Tensorflow in Practice certification."),
-
-    ]
+    var todos: [Todo] = []
          
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +23,34 @@ class TodoViewController: UIViewController {
         title="Add Todos"
         navigationItem.hidesBackButton = true
         
+        loadTodos()
+        
+    }
+    
+    func loadTodos(){
+        let todoSender = Auth.auth().currentUser?.email
+        db.collection(todoSender!).addSnapshotListener { (querySnapshot, error) in
+            self.todos = []
+            if let e = error{
+                print("There was an issue retrieving data from Firestore. \(e.localizedDescription)")
+            }else{
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        if let todoSender = data["Email ID"] as? String, let todoBody = data["Todo"] as? String {
+                            let newTodo = Todo(email: todoSender, body: todoBody)
+                            self.todos.append(newTodo)
+                            
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                let indexPath = IndexPath(row: self.todos.count - 1, section: 0)
+                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
@@ -42,6 +63,7 @@ class TodoViewController: UIViewController {
         }
         
     }
+    
     
     
     
@@ -86,14 +108,9 @@ class TodoViewController: UIViewController {
 
     }
     
-    
-    
-    
-    
-    
-    
-    
 }
+
+
 
 extension TodoViewController: UITableViewDataSource{
     
