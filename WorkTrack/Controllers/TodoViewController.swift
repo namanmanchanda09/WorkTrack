@@ -29,7 +29,7 @@ class TodoViewController: UIViewController {
     
     func loadTodos(){
         let todoSender = Auth.auth().currentUser?.email
-        db.collection(todoSender!).addSnapshotListener { (querySnapshot, error) in
+        db.collection(todoSender!).order(by: "Date").addSnapshotListener { (querySnapshot, error) in
             self.todos = []
             if let e = error{
                 print("There was an issue retrieving data from Firestore. \(e.localizedDescription)")
@@ -85,7 +85,8 @@ class TodoViewController: UIViewController {
                         let todoSender = Auth.auth().currentUser?.email
                         self.db.collection(todoSender!).addDocument(data: [
                             "Email ID": todoSender!,
-                            "Todo" : todoBody
+                            "Todo" : todoBody,
+                            "Date" : Date().timeIntervalSince1970
                         ]) { (error) in
                             if let e = error{
                                 print(e.localizedDescription)
@@ -137,11 +138,24 @@ extension TodoViewController: UITableViewDataSource{
         if editingStyle == .delete{
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            let todoSender = Auth.auth().currentUser?.email
+            
+            db.collection(todoSender!).document("crdJahFNBPFpjanXojXC").delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+            
+            
         }else{
             print("Nothing")
         }
     }
 }
+
+
 
 
 
