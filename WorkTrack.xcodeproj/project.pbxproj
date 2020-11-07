@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2626A0F82ACFD1C8C413935D /* Pods_WorkTrack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F404A580A94100D8A4235F /* Pods_WorkTrack.framework */; };
 		C9084D202556C59100D36534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9084D1F2556C59100D36534 /* GoogleService-Info.plist */; };
+		C9084D562556DD1600D36534 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9084D552556DD1600D36534 /* Todo.swift */; };
 		C929F8E425569CFC00956A82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929F8E325569CFC00956A82 /* AppDelegate.swift */; };
 		C929F8E625569CFC00956A82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929F8E525569CFC00956A82 /* SceneDelegate.swift */; };
 		C929F8E825569CFC00956A82 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929F8E725569CFC00956A82 /* WelcomeViewController.swift */; };
@@ -25,6 +26,7 @@
 		8C79C3206E53B837CA275AC9 /* Pods-WorkTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkTrack.release.xcconfig"; path = "Target Support Files/Pods-WorkTrack/Pods-WorkTrack.release.xcconfig"; sourceTree = "<group>"; };
 		C5F404A580A94100D8A4235F /* Pods_WorkTrack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkTrack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9084D1F2556C59100D36534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C9084D552556DD1600D36534 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		C929F8E025569CFC00956A82 /* WorkTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C929F8E325569CFC00956A82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C929F8E525569CFC00956A82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C9084D572556DD1A00D36534 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9084D552556DD1600D36534 /* Todo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C929F8D725569CFC00956A82 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 				C929F8EE25569CFD00956A82 /* LaunchScreen.storyboard */,
 				C929F8F125569CFD00956A82 /* Info.plist */,
 				C9084D1F2556C59100D36534 /* GoogleService-Info.plist */,
+				C9084D572556DD1A00D36534 /* Models */,
 			);
 			path = WorkTrack;
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9084D562556DD1600D36534 /* Todo.swift in Sources */,
 				C929F8E825569CFC00956A82 /* WelcomeViewController.swift in Sources */,
 				C929F8E425569CFC00956A82 /* AppDelegate.swift in Sources */,
 				C929F8E625569CFC00956A82 /* SceneDelegate.swift in Sources */,

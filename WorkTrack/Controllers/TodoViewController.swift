@@ -6,28 +6,48 @@
 //
 
 import UIKit
+import Firebase
 
 class TodoViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    
-
+    var todos: [Todo] = [
+        Todo(body: "Complete the course"),
+        Todo(body: "Make the app"),
+        Todo(body: "Publish the app")
+    ]
+         
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title="Add Todos"
+        navigationItem.hidesBackButton = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        
+    do {
+      try Auth.auth().signOut()
+        navigationController?.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+      print ("Error signing out: %@", signOutError)
+        }
+        
     }
-    */
-
 }
+
+//extension TodoViewController: UITableViewDataSource{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//
+//    
+//}
+
+
+
+
