@@ -11,28 +11,17 @@ import Firebase
 class TodoViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+    let db = Firestore.firestore()
     
     
     
     var todos: [Todo] = [
-        Todo(body: "Complete the iOS developer bootcamp."),
-        Todo(body: "Make the app."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Complete the Tensorflow in Practice certification."),
-        Todo(body: "Read another book.")
+        Todo(email: "naman@gmail.com", body: "Complete the iOS developer bootcamp."),
+        Todo(email: "naman@gmail.com", body: "Make the app."),
+        Todo(email: "naman@gmail.com", body: "Complete the Tensorflow in Practice certification."),
+        Todo(email: "naman@gmail.com", body: "Complete the Tensorflow in Practice certification."),
+        Todo(email: "naman@gmail.com", body: "Complete the Tensorflow in Practice certification."),
+
     ]
          
     override func viewDidLoad() {
@@ -66,11 +55,27 @@ class TodoViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             if let textField = alert?.textFields![0]{
-                print(textField.text!)
-            }else{
-                print("At least add something!")
+                if let todoBody = textField.text{
+                    if todoBody == ""{
+                        print("add something")
+                    }else{
+                        print(todoBody)
+                        let todoSender = Auth.auth().currentUser?.email
+                        self.db.collection(todoSender!).addDocument(data: [
+                            "Email ID": todoSender!,
+                            "Todo" : todoBody
+                        ]) { (error) in
+                            if let e = error{
+                                print(e.localizedDescription)
+                            }else{
+                                print("Saved")
+                            }
+                        }
+                        
+                    }
+                }
             }
-//            print("Text field: \(String(describing: textField?.text))")
+            
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
