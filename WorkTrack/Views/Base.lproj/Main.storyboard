@@ -82,6 +82,9 @@
                                 <rect key="frame" x="68" y="348" width="278" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="Login"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="3Hb-kj-5nt" eventType="touchUpInside" id="aJ8-lB-OQI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pPd-iR-MmQ"/>
@@ -89,7 +92,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="i07-Pe-3P8"/>
                     <connections>
-                        <segue destination="A5S-Dq-mFs" kind="show" id="klw-qg-kfJ"/>
+                        <outlet property="emailTextField" destination="O8h-yt-Fzr" id="PQ9-Hi-qjy"/>
+                        <outlet property="passwordTextField" destination="Tdb-Sf-50D" id="B37-ov-pNq"/>
+                        <segue destination="A5S-Dq-mFs" kind="show" identifier="LoginToMain" id="klw-qg-kfJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gk-la-2SP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -121,6 +126,9 @@
                     <navigationItem key="navigationItem" id="Gy8-JQ-Wf4">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="A51-Dt-il3"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="6ni-Uj-wm8" id="IiT-Cx-hAy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ed0-DM-Pyf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -158,6 +166,9 @@
                                 <rect key="frame" x="117" y="328" width="180" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="RegisterLabel"/>
+                                <connections>
+                                    <action selector="registerPressed:" destination="L2D-y3-9tb" eventType="touchUpInside" id="jRD-YA-qCO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C0Z-FL-4lV"/>
@@ -165,7 +176,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rtd-Mv-ve5"/>
                     <connections>
-                        <segue destination="A5S-Dq-mFs" kind="show" id="D2k-mv-ZYi"/>
+                        <outlet property="emailTextField" destination="0VN-0J-f0w" id="lYj-xC-lin"/>
+                        <outlet property="passwordTextfield" destination="jIV-I7-CGB" id="zR6-5N-qNC"/>
+                        <segue destination="A5S-Dq-mFs" kind="show" identifier="RegisterToMain" id="D2k-mv-ZYi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0O-6T-Fek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -192,7 +205,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="D2k-mv-ZYi"/>
+        <segue reference="klw-qg-kfJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Component" width="343" height="52"/>
