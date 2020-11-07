@@ -76,7 +76,7 @@
                                 <rect key="frame" x="78" y="233" width="258" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifj-5W-CN1">
                                 <rect key="frame" x="68" y="348" width="278" height="56"/>
@@ -156,12 +156,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jIV-I7-CGB">
-                                <rect key="frame" x="78" y="228" width="258" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJF-t9-o9E">
                                 <rect key="frame" x="117" y="328" width="180" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -170,6 +164,12 @@
                                     <action selector="registerPressed:" destination="L2D-y3-9tb" eventType="touchUpInside" id="jRD-YA-qCO"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1O-Bx-E6N">
+                                <rect key="frame" x="78" y="228" width="258" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C0Z-FL-4lV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -177,7 +177,7 @@
                     <navigationItem key="navigationItem" id="Rtd-Mv-ve5"/>
                     <connections>
                         <outlet property="emailTextField" destination="0VN-0J-f0w" id="lYj-xC-lin"/>
-                        <outlet property="passwordTextfield" destination="jIV-I7-CGB" id="zR6-5N-qNC"/>
+                        <outlet property="passwordTextField" destination="u1O-Bx-E6N" id="psD-wg-6SA"/>
                         <segue destination="A5S-Dq-mFs" kind="show" identifier="RegisterToMain" id="D2k-mv-ZYi"/>
                     </connections>
                 </viewController>
