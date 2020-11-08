@@ -11,5 +11,5 @@ This is a minimal work tracking or to-do list application for iOS devices.
 3. Adding to-dos
 4. Deleting to-dos
 
-THe project is implemented using Swift and Firebase.
+The project is implemented using Swift and Firebase.
 
