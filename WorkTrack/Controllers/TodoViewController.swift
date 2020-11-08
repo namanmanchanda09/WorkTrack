@@ -37,8 +37,11 @@ class TodoViewController: UIViewController {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
+                        let id = doc.documentID
                         if let todoSender = data["Email ID"] as? String, let todoBody = data["Todo"] as? String {
-                            let newTodo = Todo(email: todoSender, body: todoBody)
+                            let newTodo = Todo(email: todoSender, body: todoBody, id: id)
+                            print(newTodo)
+                            
                             self.todos.append(newTodo)
                             
                             DispatchQueue.main.async {
@@ -65,9 +68,7 @@ class TodoViewController: UIViewController {
     }
     
     
-    
-    
-    @IBAction func addTodoPressed(_ sender: UIButton) {
+@IBAction func addTodoPressed(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Todo Item", message: "Add Todo", preferredStyle: .alert)
         
@@ -112,6 +113,7 @@ class TodoViewController: UIViewController {
 }
 
 
+// MARK: - UITableViewDataSource
 
 extension TodoViewController: UITableViewDataSource{
     
@@ -136,11 +138,13 @@ extension TodoViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
+            let idToDelete = todos[indexPath.row].id
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             let todoSender = Auth.auth().currentUser?.email
             
-            db.collection(todoSender!).document("crdJahFNBPFpjanXojXC").delete() { err in
+            
+            db.collection(todoSender!).document(idToDelete).delete() { err in
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
@@ -149,11 +153,15 @@ extension TodoViewController: UITableViewDataSource{
             }
             
             
+            
+            
         }else{
             print("Nothing")
         }
     }
 }
+
+
 
 
 

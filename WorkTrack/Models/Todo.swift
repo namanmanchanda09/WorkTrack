@@ -10,6 +10,8 @@ import Foundation
 struct Todo{
     let email: String
     let body: String
+    let id: String
 }
+
 
 
